@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мой путь в веб-дизайне</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 100vh;
+            position: relative;
+        }
+        .hero-section {
+            background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('design-bg.jpg');
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .typing-effect {
+            border-right: 3px solid white;
+            white-space: nowrap;
+            overflow: hidden;
+            animation: typing 3s steps(40), blink-caret 0.75s step-end infinite;
+        }
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: white }
+        }
+    </style>
+</head>
+<body>
+    <section class="parallax hero-section">
+        <h1 class="animate__animated animate__fadeInDown">Мой путь в веб-дизайне</h1>
+        <p class="typing-effect animate__animated animate__fadeInUp">Год интенсивного обучения и практики</p>
+        <div class="scroll-down animate__animated animate__bounce animate__infinite">
+            <span></span>
+        </div>
+    </section>
+  <section class="skills-section">
+    <div class="container">
+        <h2>Приобретенные навыки</h2>
+        
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="html">HTML/CSS</button>
+            <button class="tab-btn" data-tab="js">JavaScript</button>
+            <button class="tab-btn" data-tab="design">Дизайн</button>
+            <button class="tab-btn" data-tab="backend">Backend</button>
+        </div>
+        
+        <div class="tab-content active" id="html">
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-btn">Семантическая верстка</button>
+                    <div class="accordion-panel">
+                        <p>Изучил правильное использование HTML5 тегов: &lt;header&gt;, &lt;nav&gt;, &lt;section&gt;, &lt;article&gt;, &lt;aside&gt;, &lt;footer&gt;.</p>
+                        <pre><code>&lt;article class="blog-post"&gt;
+    &lt;header&gt;
+        &lt;h2&gt;Заголовок статьи&lt;/h2&gt;
+        &lt;p class="meta"&gt;Опубликовано &lt;time datetime="2023-05-15"&gt;15 мая 2023&lt;/time&gt;&lt;/p&gt;
+    &lt;/header&gt;
+    &lt;section class="content"&gt;
+        &lt;p&gt;Основное содержание статьи...&lt;/p&gt;
+    &lt;/section&gt;
+    &lt;footer&gt;
+        &lt;p&gt;Автор: Иван Иванов&lt;/p&gt;
+    &lt;/footer&gt;
+&lt;/article&gt;</code></pre>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-btn">CSS Grid и Flexbox</button>
+                    <div class="accordion-panel">
+                        <p>Освоил современные методы верстки с использованием CSS Grid и Flexbox для создания адаптивных макетов.</p>
+                        <div class="grid-example">
+                            <div class="grid-container">
+                                <div class="grid-item">1</div>
+                                <div class="grid-item">2</div>
+                                <div class="grid-item">3</div>
+                                <div class="grid-item">4</div>
+                                <div class="grid-item">5</div>
+                                <div class="grid-item">6</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Остальные вкладки -->
+    </div>
+</section>
+  <section class="portfolio-section">
+    <h2>Мои работы</h2>
+    <div class="filter-buttons">
+        <button class="filter-btn active" data-filter="all">Все</button>
+        <button class="filter-btn" data-filter="web">Веб-сайты</button>
+        <button class="filter-btn" data-filter="app">Приложения</button>
+        <button class="filter-btn" data-filter="design">Дизайн</button>
+    </div>
+    
+    <div class="portfolio-grid">
+        <div class="portfolio-item web" data-category="web">
+            <img src="project1.jpg" alt="Веб-сайт для ресторана">
+            <div class="overlay">
+                <h3>Ресторан "Гастроном"</h3>
+                <p>Адаптивный сайт с онлайн-меню и системой бронирования</p>
+                <a href="#" class="view-btn">Подробнее</a>
+            </div>
+        </div>
+        
+        <div class="portfolio-item app" data-category="app">
+            <img src="project2.jpg" alt="Мобильное приложение">
+            <div class="overlay">
+                <h3>Фитнес-трекер</h3>
+                <p>Приложение для отслеживания тренировок и питания</p>
+                <a href="#" class="view-btn">Подробнее</a>
+            </div>
+        </div>
+        
+        <!-- Другие проекты -->
+    </div>
+</section>
+  <section class="timeline-section">
+    <h2>Мой путь обучения</h2>
+    <div class="timeline">
+        <div class="timeline-item left">
+            <div class="timeline-content animate__animated">
+                <h3>Сентябрь 2022</h3>
+                <p>Начало обучения. Основы HTML и CSS. Создание первых статических страниц.</p>
+                <div class="timeline-img">
+                    <img src="first-project.jpg" alt="Первый проект">
+                </div>
+            </div>
+        </div>
+        <div class="timeline-item right">
+            <div class="timeline-content animate__animated">
+                <h3>Ноябрь 2022</h3>
+                <p>Изучение адаптивной верстки и медиазапросов. Первый адаптивный сайт.</p>
+                <pre><code>@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+    }
+    .main-content {
+        grid-template-columns: 1fr;
+    }
+}</code></pre>
+            </div>
+        </div>
+        
+        <!-- Другие этапы -->
+    </div>
+</section>
+  <section class="animation-section">
+    <h2>CSS Анимации и JavaScript</h2>
+    
+    <div class="animation-showcase">
+        <div class="animation-box animate-on-scroll">
+            <div class="cube"></div>
+            <p>3D трансформации</p>
+        </div>
+        
+        <div class="animation-box">
+            <button id="js-animation-btn" class="btn-pulse">Нажми меня</button>
+            <p>JavaScript анимации</p>
+        </div>
+        
+        <div class="animation-box">
+            <div class="loader"></div>
+            <p>SVG анимации</p>
+        </div>
+    </div>
+    
+    <div class="interactive-element">
+        <h3>Drag and Drop</h3>
+        <div class="drag-container">
+            <div class="drag-item" draggable="true">Элемент 1</div>
+            <div class="drag-item" draggable="true">Элемент 2</div>
+            <div class="drag-item" draggable="true">Элемент 3</div>
+            <div class="drop-zone"></div>
+        </div>
+    </div>
+</section>
+  <section class="resources-section">
+    <h2>Полезные ресурсы</h2>
+    <div class="resources-grid">
+        <div class="resource-card">
+            <h3>Онлайн-курсы</h3>
+            <ul class="links-list">
+                <li><a href="#" target="_blank">HTML Academy</a></li>
+                <li><a href="#" target="_blank">freeCodeCamp</a></li>
+                <li><a href="#" target="_blank">Codecademy</a></li>
+            </ul>
+        </div>
+        
+        <div class="resource-card">
+            <h3>Дизайн</h3>
+            <ul class="links-list">
+                <li><a href="#" target="_blank">Behance</a></li>
+                <li><a href="#" target="_blank">Dribbble</a></li>
+                <li><a href="#" target="_blank">Awwwards</a></li>
+            </ul>
+        </div>
+        
+        <div class="resource-card">
+            <h3>Инструменты</h3>
+            <ul class="links-list">
+                <li><a href="#" target="_blank">Figma</a></li>
+                <li><a href="#" target="_blank">Adobe XD</a></li>
+                <li><a href="#" target="_blank">VS Code</a></li>
+            </ul>
+        </div>
+    </div>
+</section>
+</body>
+</html>
