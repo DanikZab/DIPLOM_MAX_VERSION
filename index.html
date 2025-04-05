@@ -3,10 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мой путь в веб-дизайне</title>
+    <title>Мой путь в веб-разработке</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         /* Основные стили */
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3f37c9;
+            --accent-color: #4895ef;
+            --dark-color: #2b2d42;
+            --light-color: #f8f9fa;
+            --success-color: #4cc9f0;
+            --text-color: #333;
+        }
+        
         * {
             margin: 0;
             padding: 0;
@@ -16,9 +27,9 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: #333;
+            color: var(--text-color);
             overflow-x: hidden;
-            background-color: #f9f9f9;
+            background-color: var(--light-color);
         }
         
         .container {
@@ -28,26 +39,74 @@
         }
         
         section {
-            padding: 80px 0;
+            padding: 100px 0;
         }
         
         h1, h2, h3, h4 {
             margin-bottom: 20px;
-            color: #2c3e50;
+            color: var(--dark-color);
+            font-weight: 700;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--primary-color);
+            border-radius: 2px;
         }
         
         p {
             margin-bottom: 15px;
+            font-size: 1.1rem;
+            color: var(--text-color);
         }
         
         a {
             text-decoration: none;
-            color: #3498db;
-            transition: color 0.3s;
+            color: var(--primary-color);
+            transition: all 0.3s ease;
         }
         
         a:hover {
-            color: #2980b9;
+            color: var(--secondary-color);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+        }
+        
+        .btn:hover {
+            background: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(67, 97, 238, 0.4);
+        }
+        
+        .btn:active {
+            transform: translateY(1px);
         }
         
         /* Параллакс секция */
@@ -71,9 +130,9 @@
         }
         
         .hero-section h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
             color: white;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
         
         .typing-effect {
@@ -81,6 +140,7 @@
             white-space: nowrap;
             overflow: hidden;
             font-size: 1.5rem;
+            margin-bottom: 30px;
             animation: typing 3s steps(40), blink-caret 0.75s step-end infinite;
         }
         
@@ -139,12 +199,14 @@
             border: none;
             cursor: pointer;
             font-size: 16px;
+            font-weight: 600;
             transition: all 0.3s;
             position: relative;
+            color: var(--text-color);
         }
         
         .tab-btn.active {
-            color: #3498db;
+            color: var(--primary-color);
         }
         
         .tab-btn.active::after {
@@ -154,7 +216,7 @@
             left: 0;
             width: 100%;
             height: 3px;
-            background: #3498db;
+            background: var(--primary-color);
         }
         
         .tab-content {
@@ -165,11 +227,12 @@
             border-radius: 0 0 8px 8px;
             background: white;
             animation: fadeIn 0.5s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
         
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
         .tab-content.active {
@@ -182,7 +245,12 @@
             border: 1px solid #ddd;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+        }
+        
+        .accordion-item:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
         .accordion-btn {
@@ -198,12 +266,14 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            color: var(--dark-color);
         }
         
         .accordion-btn::after {
             content: '+';
             font-size: 20px;
             transition: transform 0.3s;
+            color: var(--primary-color);
         }
         
         .accordion-btn.active::after {
@@ -250,6 +320,7 @@
             gap: 10px;
             margin-bottom: 30px;
             flex-wrap: wrap;
+            justify-content: center;
         }
         
         .filter-btn {
@@ -259,18 +330,19 @@
             border-radius: 20px;
             cursor: pointer;
             transition: all 0.3s;
+            font-weight: 500;
         }
         
         .filter-btn.active, .filter-btn:hover {
-            background: #3498db;
+            background: var(--primary-color);
             color: white;
-            border-color: #3498db;
+            border-color: var(--primary-color);
         }
         
         .portfolio-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
         }
         
         .portfolio-item {
@@ -278,8 +350,22 @@
             overflow: hidden;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-            aspect-ratio: 4/3;
+            transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+            aspect-ratio: 16/9;
+            transform: translateY(0);
+        }
+        
+        .portfolio-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 1;
         }
         
         .portfolio-item img {
@@ -291,45 +377,159 @@
         
         .portfolio-item:hover {
             transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        
+        .portfolio-item:hover::before {
+            opacity: 1;
         }
         
         .portfolio-item:hover img {
             transform: scale(1.1);
         }
         
-        .overlay {
+        .portfolio-info {
             position: absolute;
             bottom: -100%;
             left: 0;
             right: 0;
-            background: rgba(0,0,0,0.8);
-            color: white;
             padding: 25px;
-            transition: bottom 0.4s;
+            transition: bottom 0.4s cubic-bezier(0.33, 1, 0.68, 1);
+            z-index: 2;
+            color: white;
         }
         
-        .portfolio-item:hover .overlay {
+        .portfolio-item:hover .portfolio-info {
             bottom: 0;
         }
         
-        .overlay h3 {
+        .portfolio-info h3 {
             color: white;
             margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+        
+        .portfolio-info p {
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 15px;
+        }
+        
+        .portfolio-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+        
+        .portfolio-tag {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            backdrop-filter: blur(5px);
         }
         
         .view-btn {
             display: inline-block;
-            padding: 8px 16px;
-            background: #3498db;
-            color: white;
-            border-radius: 4px;
+            padding: 8px 20px;
+            background: white;
+            color: var(--primary-color);
+            border-radius: 50px;
             margin-top: 10px;
-            transition: background 0.3s;
+            font-weight: 600;
+            transition: all 0.3s;
         }
         
         .view-btn:hover {
-            background: #2980b9;
+            background: var(--primary-color);
             color: white;
+            transform: translateY(-2px);
+        }
+        
+        /* Лайтбокс */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+        
+        .lightbox.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+        
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            width: auto;
+            height: auto;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transform: scale(0.8);
+            transition: transform 0.3s;
+        }
+        
+        .lightbox.active .lightbox-content {
+            transform: scale(1);
+        }
+        
+        .lightbox-img {
+            max-width: 100%;
+            max-height: 80vh;
+            display: block;
+        }
+        
+        .lightbox-info {
+            padding: 20px;
+            background: white;
+        }
+        
+        .lightbox-info h3 {
+            color: var(--dark-color);
+            margin-bottom: 10px;
+        }
+        
+        .lightbox-info p {
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+        
+        .close-lightbox {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 40px;
+            height: 40px;
+            background: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2;
+            transition: all 0.3s;
+        }
+        
+        .close-lightbox:hover {
+            background: var(--primary-color);
+            transform: rotate(90deg);
         }
         
         /* Стили временной шкалы */
@@ -344,7 +544,7 @@
             content: '';
             position: absolute;
             width: 6px;
-            background: #3498db;
+            background: var(--primary-color);
             top: 0;
             bottom: 0;
             left: 50%;
@@ -365,7 +565,7 @@
             width: 25px;
             height: 25px;
             background: white;
-            border: 4px solid #3498db;
+            border: 4px solid var(--primary-color);
             border-radius: 50%;
             top: 20px;
             z-index: 1;
@@ -393,10 +593,16 @@
             border-radius: 8px;
             box-shadow: 0 3px 15px rgba(0,0,0,0.1);
             position: relative;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .timeline-item:hover .timeline-content {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
         }
         
         .timeline-content h3 {
-            color: #3498db;
+            color: var(--primary-color);
         }
         
         .timeline-img {
@@ -423,11 +629,12 @@
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             text-align: center;
-            transition: transform 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
         
         .animation-box:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
         }
         
         .animation-box p {
@@ -448,13 +655,13 @@
             position: absolute;
             width: 100%;
             height: 100%;
-            border: 2px solid #3498db;
+            border: 2px solid var(--primary-color);
             display: flex;
             justify-content: center;
             align-items: center;
             font-size: 20px;
             color: white;
-            background: rgba(52, 152, 219, 0.8);
+            background: rgba(67, 97, 238, 0.8);
         }
         
         .cube-face.front {
@@ -488,7 +695,7 @@
         
         .btn-pulse {
             padding: 12px 24px;
-            background: #3498db;
+            background: var(--primary-color);
             color: white;
             border: none;
             border-radius: 50px;
@@ -497,12 +704,13 @@
             position: relative;
             overflow: hidden;
             transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
         }
         
         .btn-pulse:hover {
-            background: #2980b9;
+            background: var(--secondary-color);
             transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+            box-shadow: 0 8px 20px rgba(67, 97, 238, 0.4);
         }
         
         .btn-pulse:active {
@@ -543,7 +751,7 @@
             height: 60px;
             margin: 0 auto;
             border: 5px solid #f3f3f3;
-            border-top: 5px solid #3498db;
+            border-top: 5px solid var(--primary-color);
             border-radius: 50%;
             animation: spin 1.5s linear infinite;
         }
@@ -563,7 +771,7 @@
         
         .drag-item {
             padding: 12px 20px;
-            background: #3498db;
+            background: var(--primary-color);
             color: white;
             border-radius: 5px;
             cursor: move;
@@ -572,7 +780,7 @@
         }
         
         .drag-item:hover {
-            background: #2980b9;
+            background: var(--secondary-color);
             transform: translateY(-3px);
         }
         
@@ -591,8 +799,8 @@
         }
         
         .drop-zone.highlight {
-            border-color: #3498db;
-            background: rgba(52, 152, 219, 0.1);
+            border-color: var(--primary-color);
+            background: rgba(67, 97, 238, 0.1);
         }
         
         /* Ресурсы */
@@ -608,7 +816,7 @@
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
         
         .resource-card:hover {
@@ -617,7 +825,7 @@
         }
         
         .resource-card h3 {
-            color: #3498db;
+            color: var(--primary-color);
             margin-bottom: 20px;
             padding-bottom: 10px;
             border-bottom: 2px solid #f1f1f1;
@@ -637,7 +845,7 @@
             content: '→';
             position: absolute;
             left: 0;
-            color: #3498db;
+            color: var(--primary-color);
         }
         
         .links-list a {
@@ -647,22 +855,199 @@
         }
         
         .links-list a:hover {
-            color: #2980b9;
+            color: var(--secondary-color);
             transform: translateX(5px);
+        }
+        
+        /* Контактная форма */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+        
+        .submit-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+        }
+        
+        .submit-btn:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(67, 97, 238, 0.3);
+        }
+        
+        #form-message {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            display: none;
+        }
+        
+        #form-message.success {
+            display: block;
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        #form-message.error {
+            display: block;
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        /* Футер */
+        .footer {
+            background: var(--dark-color);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .footer-info p {
+            color: #ecf0f1;
+            margin-bottom: 15px;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #bdc3c7;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 20px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background: var(--primary-color);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #bdc3c7;
+            font-size: 14px;
+        }
+        
+        /* Кнопка "Наверх" */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            z-index: 99;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+        }
+        
+        .back-to-top:hover {
+            background: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        .back-to-top i {
+            font-size: 20px;
         }
         
         /* Адаптивность */
         @media (max-width: 992px) {
             section {
-                padding: 60px 0;
+                padding: 80px 0;
             }
             
-            .hero-section h1 {
-                font-size: 2.8rem;
+            h1 {
+                font-size: 3rem;
             }
             
-            .typing-effect {
-                font-size: 1.3rem;
+            h2 {
+                font-size: 2.2rem;
             }
         }
         
@@ -692,11 +1077,19 @@
             .animation-showcase {
                 grid-template-columns: 1fr;
             }
+            
+            .contact-form {
+                padding: 30px;
+            }
         }
         
         @media (max-width: 576px) {
-            .hero-section h1 {
+            h1 {
                 font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
             }
             
             .typing-effect {
@@ -715,6 +1108,13 @@
             .filter-buttons {
                 justify-content: center;
             }
+            
+            .back-to-top {
+                width: 40px;
+                height: 40px;
+                bottom: 20px;
+                right: 20px;
+            }
         }
     </style>
 </head>
@@ -722,8 +1122,9 @@
     <!-- Параллакс секция -->
     <section class="parallax hero-section">
         <div class="container">
-            <h1 class="animate__animated animate__fadeInDown">Мой путь в веб-дизайне</h1>
-            <p class="typing-effect animate__animated animate__fadeInUp">Год интенсивного обучения и практики</p>
+            <h1 class="animate__animated animate__fadeInDown">Мой путь в веб-разработке</h1>
+            <p class="typing-effect animate__animated animate__fadeInUp">От новичка к профессионалу</p>
+            <a href="#portfolio" class="btn animate__animated animate__fadeInUp animate__delay-1s">Посмотреть работы</a>
             <div class="scroll-down animate__animated animate__bounce animate__infinite">
                 <span></span>
             </div>
@@ -910,7 +1311,7 @@ MongoClient.connect(url, function(err, client) {
     </section>
 
     <!-- Портфолио -->
-    <section class="portfolio-section">
+    <section id="portfolio" class="portfolio-section">
         <div class="container">
             <h2>Мои работы</h2>
             <div class="filter-buttons">
@@ -921,62 +1322,112 @@ MongoClient.connect(url, function(err, client) {
             </div>
             
             <div class="portfolio-grid">
+                <!-- Проект 1 -->
                 <div class="portfolio-item web" data-category="web">
-                    <img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Веб-сайт для ресторана">
-                    <div class="overlay">
-                        <h3>Ресторан "Гастроном"</h3>
-                        <p>Адаптивный сайт с онлайн-меню и системой бронирования</p>
-                        <a href="#" class="view-btn">Подробнее</a>
-                    </div>
-                </div>
-                
-                <div class="portfolio-item app" data-category="app">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Мобильное приложение">
-                    <div class="overlay">
-                        <h3>Фитнес-трекер</h3>
-                        <p>Приложение для отслеживания тренировок и питания</p>
-                        <a href="#" class="view-btn">Подробнее</a>
-                    </div>
-                </div>
-                
-                <div class="portfolio-item design" data-category="design">
-                    <img src="https://images.unsplash.com/photo-1541462608143-67571c6738dd?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Дизайн лендинга">
-                    <div class="overlay">
-                        <h3>Лендинг для стартапа</h3>
-                        <p>Современный дизайн с акцентом на конверсию</p>
-                        <a href="#" class="view-btn">Подробнее</a>
-                    </div>
-                </div>
-                
-                <div class="portfolio-item web" data-category="web">
-                    <img src="https://images.unsplash.com/photo-1481487196290-c152efe083f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Корпоративный сайт">
-                    <div class="overlay">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Корпоративный сайт">
+                    <div class="portfolio-info">
                         <h3>Корпоративный портал</h3>
-                        <p>Система управления контентом для компании</p>
-                        <a href="#" class="view-btn">Подробнее</a>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">HTML5</span>
+                            <span class="portfolio-tag">CSS3</span>
+                            <span class="portfolio-tag">JavaScript</span>
+                        </div>
+                        <p>Полностью адаптивный корпоративный сайт с системой управления контентом</p>
+                        <a href="#" class="view-btn view-project" data-project="1">Подробнее</a>
                     </div>
                 </div>
                 
+                <!-- Проект 2 -->
                 <div class="portfolio-item app" data-category="app">
-                    <img src="https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Игровое приложение">
-                    <div class="overlay">
-                        <h3>Мобильная игра</h3>
-                        <p>Казуальная игра с использованием Canvas API</p>
-                        <a href="#" class="view-btn">Подробнее</a>
+                    <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Мобильное приложение">
+                    <div class="portfolio-info">
+                        <h3>Фитнес-трекер</h3>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">React</span>
+                            <span class="portfolio-tag">Redux</span>
+                            <span class="portfolio-tag">Firebase</span>
+                        </div>
+                        <p>Приложение для отслеживания тренировок и питания с синхронизацией между устройствами</p>
+                        <a href="#" class="view-btn view-project" data-project="2">Подробнее</a>
                     </div>
                 </div>
                 
+                <!-- Проект 3 -->
                 <div class="portfolio-item design" data-category="design">
-                    <img src="https://images.unsplash.com/photo-1494172961521-33799ddd43a5?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Брендбук">
-                    <div class="overlay">
+                    <img src="https://images.unsplash.com/photo-1541462608143-67571c6738dd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Дизайн лендинга">
+                    <div class="portfolio-info">
+                        <h3>Лендинг для стартапа</h3>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">Figma</span>
+                            <span class="portfolio-tag">UI/UX</span>
+                            <span class="portfolio-tag">Прототипирование</span>
+                        </div>
+                        <p>Современный дизайн лендинга с акцентом на конверсию и мобильный опыт</p>
+                        <a href="#" class="view-btn view-project" data-project="3">Подробнее</a>
+                    </div>
+                </div>
+                
+                <!-- Проект 4 -->
+                <div class="portfolio-item web" data-category="web">
+                    <img src="https://images.unsplash.com/photo-1481487196290-c152efe083f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Интернет-магазин">
+                    <div class="portfolio-info">
+                        <h3>Интернет-магазин</h3>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">Vue.js</span>
+                            <span class="portfolio-tag">Node.js</span>
+                            <span class="portfolio-tag">MongoDB</span>
+                        </div>
+                        <p>Полнофункциональный интернет-магазин с корзиной, фильтрами и системой оплаты</p>
+                        <a href="#" class="view-btn view-project" data-project="4">Подробнее</a>
+                    </div>
+                </div>
+                
+                <!-- Проект 5 -->
+                <div class="portfolio-item app" data-category="app">
+                    <img src="https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Игровое приложение">
+                    <div class="portfolio-info">
+                        <h3>Мобильная игра</h3>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">Unity</span>
+                            <span class="portfolio-tag">C#</span>
+                            <span class="portfolio-tag">Firebase</span>
+                        </div>
+                        <p>Казуальная игра с использованием физического движка и системой достижений</p>
+                        <a href="#" class="view-btn view-project" data-project="5">Подробнее</a>
+                    </div>
+                </div>
+                
+                <!-- Проект 6 -->
+                <div class="portfolio-item design" data-category="design">
+                    <img src="https://images.unsplash.com/photo-1494172961521-33799ddd43a5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Брендбук">
+                    <div class="portfolio-info">
                         <h3>Брендбук компании</h3>
-                        <p>Разработка фирменного стиля и гайдлайнов</p>
-                        <a href="#" class="view-btn">Подробнее</a>
+                        <div class="portfolio-tags">
+                            <span class="portfolio-tag">Adobe Illustrator</span>
+                            <span class="portfolio-tag">Photoshop</span>
+                            <span class="portfolio-tag">Брендинг</span>
+                        </div>
+                        <p>Разработка фирменного стиля и гайдлайнов для технологического стартапа</p>
+                        <a href="#" class="view-btn view-project" data-project="6">Подробнее</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Лайтбокс для проектов -->
+    <div class="lightbox" id="project-lightbox">
+        <div class="lightbox-content">
+            <button class="close-lightbox">&times;</button>
+            <img src="" alt="Project Image" class="lightbox-img">
+            <div class="lightbox-info">
+                <h3 id="lightbox-title">Название проекта</h3>
+                <div class="portfolio-tags" id="lightbox-tags"></div>
+                <p id="lightbox-description">Описание проекта будет здесь</p>
+                <a href="#" class="btn" id="lightbox-link" target="_blank">Посмотреть проект</a>
+            </div>
+        </div>
+    </div>
 
     <!-- Путь обучения -->
     <section class="timeline-section">
@@ -985,8 +1436,8 @@ MongoClient.connect(url, function(err, client) {
             <div class="timeline">
                 <div class="timeline-item left">
                     <div class="timeline-content animate__animated">
-                        <h3>1</h3>
-                        <p>Начало обучения. Основы HTML и CSS. Создание первых статических страниц.</p>
+                        <h3>Основы HTML и CSS</h3>
+                        <p>Начало обучения. Создание первых статических страниц. Изучение семантической верстки и базовых стилей.</p>
                         <div class="timeline-img">
                             <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Первый проект">
                         </div>
@@ -994,8 +1445,8 @@ MongoClient.connect(url, function(err, client) {
                 </div>
                 <div class="timeline-item right">
                     <div class="timeline-content animate__animated">
-                        <h3>2</h3>
-                        <p>Изучение адаптивной верстки и медиазапросов. Первый адаптивный сайт.</p>
+                        <h3>Адаптивная верстка</h3>
+                        <p>Изучение медиазапросов и адаптивных техник. Первый полностью адаптивный сайт с мобильным меню.</p>
                         <pre><code>@media (max-width: 768px) {
     .navbar {
         flex-direction: column;
@@ -1009,16 +1460,15 @@ MongoClient.connect(url, function(err, client) {
                 
                 <div class="timeline-item left">
                     <div class="timeline-content animate__animated">
-                        <h3>3</h3>
-                        <p>Освоение JavaScript: основы синтаксиса, работа с DOM, обработка событий.</p>
-                        <p>Создание первых интерактивных элементов.</p>
+                        <h3>JavaScript</h3>
+                        <p>Освоение основ JavaScript: синтаксис, работа с DOM, обработка событий. Создание первых интерактивных элементов.</p>
                     </div>
                 </div>
                 
                 <div class="timeline-item right">
                     <div class="timeline-content animate__animated">
-                        <h3>4</h3>
-                        <p>Работа в Figma. Создание первых дизайн-макетов.</p>
+                        <h3>Дизайн в Figma</h3>
+                        <p>Работа в Figma. Создание дизайн-макетов, компонентов и прототипов. Изучение принципов UI/UX.</p>
                         <div class="timeline-img">
                             <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Дизайн в Figma">
                         </div>
@@ -1027,8 +1477,8 @@ MongoClient.connect(url, function(err, client) {
                 
                 <div class="timeline-item left">
                     <div class="timeline-content animate__animated">
-                        <h3>5</h3>
-                        <p>Работа с Git</p>
+                        <h3>Система контроля версий</h3>
+                        <p>Работа с Git и GitHub. Управление версиями проектов и совместная работа в команде.</p>
                         <pre><code>git init
 git add .
 git commit -m "Добавил адаптивность"
@@ -1038,8 +1488,8 @@ git push origin main</code></pre>
                 
                 <div class="timeline-item right">
                     <div class="timeline-content animate__animated">
-                        <h3>6</h3>
-                        <p>Интеграция технологий.</p>
+                        <h3>Фреймворки и библиотеки</h3>
+                        <p>Изучение React, Vue.js и других современных инструментов. Создание SPA-приложений.</p>
                     </div>
                 </div>
             </div>
@@ -1052,36 +1502,37 @@ git push origin main</code></pre>
             <h2>CSS Анимации и JavaScript</h2>
             
             <div class="animation-showcase">
-                <div class="animation-box animate-on-sc
-                                    <div class="cube">
-                    <div class="cube-face front">Front</div>
-                    <div class="cube-face back">Back</div>
-                    <div class="cube-face right">Right</div>
-                    <div class="cube-face left">Left</div>
-                    <div class="cube-face top">Top</div>
-                    <div class="cube-face bottom">Bottom</div>
+                <div class="animation-box">
+                    <div class="cube">
+                        <div class="cube-face front">Front</div>
+                        <div class="cube-face back">Back</div>
+                        <div class="cube-face right">Right</div>
+                        <div class="cube-face left">Left</div>
+                        <div class="cube-face top">Top</div>
+                        <div class="cube-face bottom">Bottom</div>
+                    </div>
+                    <p>3D трансформации</p>
                 </div>
-                <p>3D трансформации</p>
+                
+                <div class="animation-box">
+                    <button id="js-animation-btn" class="btn-pulse">Нажми меня</button>
+                    <p>JavaScript анимации</p>
+                </div>
+                
+                <div class="animation-box">
+                    <div class="loader"></div>
+                    <p>CSS анимации</p>
+                </div>
             </div>
             
-            <div class="animation-box">
-                <button id="js-animation-btn" class="btn-pulse">Нажми меня</button>
-                <p>JavaScript анимации</p>
-            </div>
-            
-            <div class="animation-box">
-                <div class="loader"></div>
-                <p>SVG анимации</p>
-            </div>
-        </div>
-        
-        <div class="interactive-element">
-            <h3>Drag and Drop</h3>
-            <div class="drag-container">
-                <div class="drag-item" draggable="true">Элемент 1</div>
-                <div class="drag-item" draggable="true">Элемент 2</div>
-                <div class="drag-item" draggable="true">Элемент 3</div>
-                <div class="drop-zone">Перетащите сюда</div>
+            <div class="interactive-element">
+                <h3>Drag and Drop</h3>
+                <div class="drag-container">
+                    <div class="drag-item" draggable="true">Элемент 1</div>
+                    <div class="drag-item" draggable="true">Элемент 2</div>
+                    <div class="drag-item" draggable="true">Элемент 3</div>
+                    <div class="drop-zone">Перетащите сюда</div>
+                </div>
             </div>
         </div>
     </section>
@@ -1115,9 +1566,9 @@ git push origin main</code></pre>
                     <h3>Инструменты</h3>
                     <ul class="links-list">
                         <li><a href="https://www.figma.com" target="_blank">Figma</a></li>
-                        <li><a href="https://www.adobe.com/products/xd.html" target="_blank">Adobe XD</a></li>
                         <li><a href="https://code.visualstudio.com" target="_blank">VS Code</a></li>
                         <li><a href="https://github.com" target="_blank">GitHub</a></li>
+                        <li><a href="https://codepen.io" target="_blank">CodePen</a></li>
                     </ul>
                 </div>
             </div>
@@ -1127,7 +1578,7 @@ git push origin main</code></pre>
     <!-- Контактная форма -->
     <section class="contact-section">
         <div class="container">
-            <h2>Если будет скучно, можете написать😁</h2>
+            <h2>Свяжитесь со мной</h2>
             <form id="contact-form" class="contact-form">
                 <div class="form-group">
                     <label for="name">Имя</label>
@@ -1153,7 +1604,7 @@ git push origin main</code></pre>
             <div class="footer-content">
                 <div class="footer-info">
                     <h3>Обо мне</h3>
-                    <p>Веб-дизайнер и немного программист. Год интенсивного обучения и практики.</p>
+                    <p>Фронтенд-разработчик и дизайнер. Создаю современные и интерактивные веб-приложения.</p>
                 </div>
                 <div class="footer-links">
                     <h3>Быстрые ссылки</h3>
@@ -1175,7 +1626,7 @@ git push origin main</code></pre>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Мой дипломный проект. Забайкин Даниил.</p>
+                <p>&copy; 2025 Мое портфолио. Все права защищены.</p>
             </div>
         </div>
     </footer>
@@ -1185,11 +1636,53 @@ git push origin main</code></pre>
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <!-- Font Awesome для иконок -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
     <script>
-        // Анимация при скролле
+        // Данные для проектов портфолио
+        const projects = {
+            1: {
+                title: "Корпоративный портал",
+                image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                tags: ["HTML5", "CSS3", "JavaScript"],
+                description: "Полностью адаптивный корпоративный сайт с системой управления контентом. Реализована административная панель для управления новостями, сотрудниками и документами.",
+                link: "#"
+            },
+            2: {
+                title: "Фитнес-трекер",
+                image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                tags: ["React", "Redux", "Firebase"],
+                description: "Приложение для отслеживания тренировок и питания с синхронизацией между устройствами. Включает календарь тренировок, трекер прогресса и систему рекомендаций.",
+                link: "#"
+            },
+            3: {
+                title: "Лендинг для стартапа",
+                image: "https://images.unsplash.com/photo-1541462608143-67571c6738dd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                tags: ["Figma", "UI/UX", "Прототипирование"],
+                description: "Современный дизайн лендинга с акцентом на конверсию и мобильный опыт. Разработана система компонентов и стилей для быстрого масштабирования.",
+                link: "#"
+            },
+            4: {
+                title: "Интернет-магазин",
+                image: "https://images.unsplash.com/photo-1481487196290-c152efe083f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                tags: ["Vue.js", "Node.js", "MongoDB"],
+                description: "Полнофункциональный интернет-магазин с корзиной, фильтрами и системой оплаты. Реализована панель администратора для управления товарами и заказами.",
+                link: "#"
+            },
+            5: {
+                title: "Мобильная игра",
+                image: "https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                tags: ["Unity", "C#", "Firebase"],
+                description: "Казуальная игра с использованием физического движка и системой достижений. Реализована мультиплеерная игра через Firebase Realtime Database.",
+                link: "#"
+            },
+            6: {
+                title: "Брендбук компании",
+                image: "https://images.unsplash.com/photo-1494172961521-33799ddd43a5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+                tags: ["Adobe Illustrator", "Photoshop", "Брендинг"],
+                description: "Разработка фирменного стиля и гайдлайнов для технологического стартапа. Создана система логотипов, цветовых палитр и типографики.",
+                link: "#"
+            }
+        };
+
         document.addEventListener('DOMContentLoaded', function() {
             // Табы
             const tabBtns = document.querySelectorAll('.tab-btn');
@@ -1234,6 +1727,49 @@ git push origin main</code></pre>
                         }
                     });
                 });
+            });
+            
+            // Лайтбокс для проектов
+            const lightbox = document.getElementById('project-lightbox');
+            const viewButtons = document.querySelectorAll('.view-project');
+            const closeLightbox = document.querySelector('.close-lightbox');
+            
+            viewButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const projectId = this.getAttribute('data-project');
+                    const project = projects[projectId];
+                    
+                    document.getElementById('lightbox-title').textContent = project.title;
+                    document.querySelector('.lightbox-img').src = project.image;
+                    document.getElementById('lightbox-description').textContent = project.description;
+                    document.getElementById('lightbox-link').href = project.link;
+                    
+                    const tagsContainer = document.getElementById('lightbox-tags');
+                    tagsContainer.innerHTML = '';
+                    
+                    project.tags.forEach(tag => {
+                        const tagElement = document.createElement('span');
+                        tagElement.className = 'portfolio-tag';
+                        tagElement.textContent = tag;
+                        tagsContainer.appendChild(tagElement);
+                    });
+                    
+                    lightbox.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+            
+            closeLightbox.addEventListener('click', function() {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+            
+            lightbox.addEventListener('click', function(e) {
+                if (e.target === lightbox) {
+                    lightbox.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
             });
             
             // Drag and Drop
@@ -1395,202 +1931,5 @@ git push origin main</code></pre>
             });
         });
     </script>
-
-    <!-- Дополнительные стили для новых разделов -->
-    <style>
-        /* Контактная форма */
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: #2c3e50;
-        }
-        
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 16px;
-            transition: border 0.3s;
-        }
-        
-        .form-group input:focus,
-        .form-group textarea:focus {
-            border-color: #3498db;
-            outline: none;
-        }
-        
-        .submit-btn {
-            background: #3498db;
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            font-size: 16px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .submit-btn:hover {
-            background: #2980b9;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 10px rgba(52, 152, 219, 0.3);
-        }
-        
-        #form-message {
-            margin-top: 20px;
-            padding: 10px;
-            border-radius: 5px;
-            display: none;
-        }
-        
-        #form-message.success {
-            display: block;
-            background: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
-        }
-        
-        #form-message.error {
-            display: block;
-            background: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
-        }
-        
-        /* Футер */
-        .footer {
-            background: #2c3e50;
-            color: white;
-            padding: 60px 0 20px;
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-        
-        .footer h3 {
-            color: white;
-            margin-bottom: 20px;
-            font-size: 1.2rem;
-        }
-        
-        .footer-info p {
-            color: #ecf0f1;
-            margin-bottom: 15px;
-        }
-        
-        .footer-links ul {
-            list-style: none;
-        }
-        
-        .footer-links li {
-            margin-bottom: 10px;
-        }
-        
-        .footer-links a {
-            color: #bdc3c7;
-            transition: color 0.3s;
-        }
-        
-        .footer-links a:hover {
-            color: #3498db;
-        }
-        
-        .social-icons {
-            display: flex;
-            gap: 15px;
-        }
-        
-        .social-icons a {
-            color: white;
-            font-size: 20px;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
-        }
-        
-        .social-icons a:hover {
-            background: #3498db;
-            transform: translateY(-3px);
-        }
-        
-        .footer-bottom {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            color: #bdc3c7;
-            font-size: 14px;
-        }
-        
-        /* Кнопка "Наверх" */
-        .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
-            background: #3498db;
-            color: white;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            display: none;
-            z-index: 99;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-            transition: all 0.3s;
-        }
-        
-        .back-to-top:hover {
-            background: #2980b9;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        }
-        
-        .back-to-top i {
-            font-size: 20px;
-        }
-        
-        /* Адаптивность для новых разделов */
-        @media (max-width: 768px) {
-            .contact-form {
-                padding: 20px;
-            }
-            
-            .footer-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .back-to-top {
-                width: 40px;
-                height: 40px;
-                bottom: 20px;
-                right: 20px;
-            }
-        }
-    </style>
 </body>
 </html>
